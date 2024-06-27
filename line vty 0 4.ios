@@ -1,0 +1,6 @@
+line vty 0 4
+ exec-timeout 5 30
+ password 7 08701E1D290A00191308
+ logging synchronous
+ login local
+ transport input ssh

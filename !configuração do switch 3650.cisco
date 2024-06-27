@@ -1,0 +1,27 @@
+!configuração do switch 3650
+  enable
+    Configure terminal
+     ip routing
+     interface vlan20
+     description interface gateway da vlan 20
+     ip address 192.168.20.254 255.255.255.0
+     no shutdown
+    end
+     write
+     =============================================================================
+     !configuração switch 3650
+     enable
+      Configure terminal
+         interface vlan 30
+         description interface gateway vlan 30
+         ip address 192.168.30.254 255.255.255.0
+         ip helper-address 192.168.20.2
+         no shutdown
+        end
+        write
+        ====
+        ipconfig /all (169.254.x.x- ERRO) 
+        ipconfig /release
+        ipconfig /renew
+
+
