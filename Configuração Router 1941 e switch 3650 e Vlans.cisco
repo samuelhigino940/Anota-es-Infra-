@@ -1,0 +1,72 @@
+
+!Configuração do Router 1941 SPO 
+Enable
+  configure terminal
+     interface  GigabitEthernet 0/0/0
+       description interface  WAN SPO para RJO
+       ip address 10.0.0.1 255.255.255.252
+       no shutdown
+       end 
+write
+
+Show running-config
+show ip interface brief
+show ip route 
+
+==================================================================================================
+
+!Configuração do Switch Multilayer 3650
+
+Enable
+ configure terminal
+   interface GigabitEthernet 1/0/24
+       Description Interface de Conexao com o Router 1941
+       no switchport
+       ip address 192.168.2.1 255.255.255.0
+       no shutdown
+       end
+write
+
+==================================================================================================
+
+!Configuração Router SPO
+
+Enable
+  Configure terminal
+   ip route 0.0.0.0 0.0.0.0 10.0.0.2
+end
+write
+
+==================================================================================================
+
+!Configuração Router RJO
+
+Enable
+ Configure terminal
+   ip route 192.168.1.0 255.255.255.0 10.0.0.1 
+ end
+write
+==================================================================================================
+
+!Configuração Switch 3650
+ 
+Enable
+   configure terminal
+    ip route 0.0.0.0 0.0.0.0 192.168.2.254
+  end
+write
+
+ping 192.168.20.254
+ping 192.168.2.1
+ping 10.0.0.2
+ping 10.0.0.1
+ping 192.168.1.254
+ping 192.168.1.1
+
+===================================================================================================
+Enable
+  Configure terminal
+   ip route 
+ end
+
+write
