@@ -1,0 +1,49 @@
+#configurção do router da aula do ramos 
+enable
+    configure terminal
+        hostname SP
+        interface fastethernet 0/0
+            ip address 192.168.10.1 255.255.255.0
+            no shutdown
+            description porta lan de sp
+            exit  
+        interface s0/0 
+            no shutdown
+            ip address 20.0.0.1 255.0.0.0 
+            description porta wan que liga sp ao rj
+            clock rate 128000
+            bandwidth 128
+            exit    
+        router rip
+            network 20.0.0.0
+            network 192.168.10.0
+            end
+copy run star
+
+!router do lado do rj 
+enable
+    configure terminal
+        hostname RJ
+        interface fastethernet 0/0
+            ip address 192.168.20.1 255.255.255.0
+            no shutdown
+            description porta lan de rj
+            exit
+        interface s0/1
+            no shutdown
+            ip address 20.0.0.2 255.0.0.0
+            description porta wan que liga rj ao sp
+            bandwidth 128
+            exit
+        router rip 
+            network 20.0.0.0
+            network 192.168.20.0
+            end
+copy run star                    
+
+
+
+
+
+
+
